@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Événements en JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f8fa;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #16a085;
+        }
+
+        .code-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e8f4fc;
+        }
+
+        .example-box {
+            background-color: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .interactive-demo {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        button,
+        input {
+            padding: 10px 15px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Les Événements en JavaScript</h1>
+
+    <p>Les événements sont ce qui rendent une page web interactive. Ils permettent de réagir aux actions de
+        l'utilisateur (clic, souris, clavier) ou au navigateur (chargement de page).</p>
+
+    <h2>1. Le B.A.-BA : Écouter un événement</h2>
+
+    <p>Il y a trois méthodes principales pour attacher un événement à un élément.</p>
+
+    <h3>Méthode 1 : L'attribut HTML (à éviter pour de gros projets)</h3>
+    <div class="code-block">
+        &lt;button onclick="alert('Clic !')"&gt;Cliquez-moi&lt;/button&gt;
+    </div>
+
+    <h3>Méthode 2 : La propriété DOM (simple mais limitée)</h3>
+    <div class="code-block">
+        let bouton = document.querySelector('button');
+
+        bouton.onclick = function() {
+        console.log('Premier gestionnaire');
+        };
+
+        // Problème : on ne peut en assigner qu'un seul !
+        bouton.onclick = function() {
+        console.log('Deuxième gestionnaire (écrase le premier)');
+        };
+    </div>
+
+    <h3>Méthode 3 : addEventListener() (LA méthode à utiliser)</h3>
+    <p>C'est la meilleure pratique car elle permet d'ajouter <strong>plusieurs écouteurs</strong> sur le même événement
+        pour le même élément.</p>
+    <div class="code-block">
+        let bouton = document.querySelector('button');
+
+        // Premier gestionnaire
+        bouton.addEventListener('click', function() {
+        console.log('Premier clic enregistré !');
+        });
+
+        // Deuxième gestionnaire (s'ajoute au premier, ne l'écrase pas)
+        bouton.addEventListener('click', function() {
+        console.log('Deuxième clic enregistré !');
+        });
+        // Les deux messages s'afficheront au clic
+    </div>
+
+    <div class="note">
+        <strong>Note :</strong> Utilisez toujours <code>addEventListener()</code> pour une meilleure maintenabilité de
+        votre code.
+    </div>
+
+    <h2>2. Les Événements Courants à Connaître</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Catégorie</th>
+                <th>Événement</th>
+                <th>Déclenché quand...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3"><strong>Souris</strong></td>
+                <td><code>'click'</code></td>
+                <td>Un clic est fait sur l'élément.</td>
+            </tr>
+            <tr>
+                <td><code>'dblclick'</code></td>
+                <td>Un double-clic est fait sur l'élément.</td>
+            </tr>
+            <tr>
+                <td><code>'mouseover'</code></td>
+                <td>La souris entre sur l'élément.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><code>'mouseout'</code></td>
+                <td>La souris quitte l'élément.</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><strong>Clavier</strong></td>
+                <td><code>'keydown'</code></td>
+                <td>Une touche du clavier est enfoncée.</td>
+            </tr>
+            <tr>
+                <td><code>'keyup'</code></td>
+                <td>Une touche du clavier est relâchée.</td>
+            </tr>
+            <tr>
+                <td rowspan="5"><strong>Formulaire</strong></td>
+                <td><code>'submit'</code></td>
+                <td>Un formulaire est soumis.</td>
+            </tr>
+            <tr>
+                <td><code>'change'</code></td>
+                <td>La valeur d'un input/select/textarea change.</td>
+            </tr>
+            <tr>
+                <td><code>'input'</code></td>
+                <td>La valeur d'un input change (en temps réel).</td>
+            </tr>
+            <tr>
+                <td><code>'focus'</code></td>
+                <td>L'élément reçoit le focus.</td>
+            </tr>
+            <tr>
+                <td><code>'blur'</code></td>
+                <td>L'élément perd le focus.</td>
+            </tr>
+            <tr>
+                <td rowspan="3"><strong>Window/Document</strong></td>
+                <td><code>'DOMContentLoaded'</code></td>
+                <td>Le HTML est entièrement chargé et parsé.</td>
+            </tr>
+            <tr>
+                <td><code>'load'</code></td>
+                <td>Toute la page (images incluses) est chargée.</td>
+            </tr>
+            <tr>
+                <td><code>'resize'</code></td>
+                <td>La fenêtre est redimensionnée.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. L'objet Event : Une Mine d'Informations</h2>
+
+    <p>Lorsqu'un événement se produit, le navigateur crée un objet <code>Event</code> qui contient toutes les
+        informations sur cet événement. Cet objet est automatiquement passé à la fonction de callback.</p>
+
+    <div class="code-block">
+        element.addEventListener('click', function(event) {
+        // 'event' est l'objet événement
+        console.log(event.type); // Affiche "click"
+        console.log(event.target); // Affiche l'élément qui a été cliqué
+        });
+    </div>
+
+    <h3>Propriétés utiles de l'objet Event :</h3>
+    <ul>
+        <li><code>event.target</code> : L'élément qui a <strong>déclenché</strong> l'événement.</li>
+        <li><code>event.currentTarget</code> : L'élément sur lequel l'écouteur est <strong>attaché</strong> (dans la
+            fonction, <code>this</code> est égal à <code>currentTarget</code>).</li>
+        <li><code>event.type</code> : Le type de l'événement ('click', 'keydown', etc.).</li>
+        <li><code>event.preventDefault()</code> : <strong>Empêche le comportement par défaut</strong> du navigateur (ex
+            : empêcher un lien de naviguer, un formulaire de s'envoyer).</li>
+        <li><code>event.stopPropagation()</code> : <strong>Arrête la propagation</strong> de l'événement aux parents.
+        </li>
+    </ul>
+
+    <h3>Exemple avec le clavier :</h3>
+    <div class="code-block">
+        document.addEventListener('keydown', function(e) {
+        console.log(`Touche pressée : ${e.key}`); // Affiche la touche (ex: "a", "Enter")
+        console.log(`Code de la touche : ${e.code}`); // Affiche le code physique (ex: "KeyA", "Enter")
+        });
+    </div>
+
+    <h2>4. Un Exemple Complet avec un Formulaire</h2>
+
+    <div class="example-box">
+        <h3>HTML :</h3>
+        <div class="code-block">
+            &lt;form id="monForm"&gt;
+            &lt;input type="text" id="prenom" placeholder="Votre prénom"&gt;
+            &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+            &lt;/form&gt;
+            &lt;p id="message"&gt;&lt;/p&gt;
+        </div>
+
+        <h3>JavaScript :</h3>
+        <div class="code-block">
+            let formulaire = document.getElementById('monForm');
+
+            formulaire.addEventListener('submit', function(event) {
+            // 1. On empêche l'envoi classique du formulaire (rechargement de la page)
+            event.preventDefault();
+
+            // 2. On récupère la valeur du champ
+            let prenom = document.getElementById('prenom').value;
+
+            // 3. On fait quelque chose avec cette valeur
+            document.getElementById('message').textContent = `Bonjour ${prenom} !`;
+
+            // 4. On peut vider le champ ensuite
+            document.getElementById('prenom').value = '';
+            });
+        </div>
+    </div>
+
+    <div class="interactive-demo">
+        <h2>Démonstration Interactive</h2>
+        <form id="demoForm">
+            <input type="text" id="demoPrenom" placeholder="Entrez votre prénom">
+            <button type="submit">Dire bonjour</button>
+        </form>
+        <p id="demoMessage"></p>
+    </div>
+
+    <div class="note">
+        <h3>Pour résumer :</h3>
+        <ul>
+            <li>Utilisez toujours <strong><code>addEventListener()</code></strong>.</li>
+            <li>L'objet <strong><code>event</code></strong> est votre ami pour savoir exactement ce qui s'est passé.
+            </li>
+            <li>Pensez à <strong><code>preventDefault()</code></strong> pour les formulaires et liens si vous voulez
+                gérer l'action vous-même en JS.</li>
+        </ul>
+    </div>
+
+    <script>
+        // Script pour la démonstration interactive
+        document.getElementById('demoForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let prenom = document.getElementById('demoPrenom').value;
+            document.getElementById('demoMessage').textContent = `Bonjour ${prenom} !`;
+            document.getElementById('demoPrenom').value = '';
+        });
+    </script>
+</body>
+
+</html>
