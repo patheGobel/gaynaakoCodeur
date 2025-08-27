@@ -118,6 +118,14 @@ h3 {
     margin: 25px 0;
 }
 
+.problem {
+    background-color: #d5cdff;
+    border-left: 5px solid #ff0724;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
 .event-section {
     background-color: white;
     padding: 25px;
