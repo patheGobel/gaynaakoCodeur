@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exécution du code JavaScript</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Exécution du Code JavaScript</h1>
@@ -39,24 +41,29 @@
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <strong>Chargement du document</strong> : Le navigateur commence à analyser le code HTML à partir de la balise <code>&lt;!DOCTYPE html&gt;</code> qui indique qu'il s'agit d'un document HTML5.
+                            <strong>Chargement du document</strong> : Le navigateur commence à analyser le code HTML à
+                            partir de la balise <code>&lt;!DOCTYPE html&gt;</code> qui indique qu'il s'agit d'un
+                            document HTML5.
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <strong>Ouverture de la balise &lt;html&gt;</strong> : Définit la racine du document HTML et la langue (anglais dans ce cas).
+                            <strong>Ouverture de la balise &lt;html&gt;</strong> : Définit la racine du document HTML et
+                            la langue (anglais dans ce cas).
                         </div>
                     </div>
 
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <strong>Section &lt;head&gt;</strong> : Le navigateur traite l'en-tête du document qui contient les métadonnées.
+                            <strong>Section &lt;head&gt;</strong> : Le navigateur traite l'en-tête du document qui
+                            contient les métadonnées.
                             <ul>
                                 <li>Définition du titre de la page : "Hello"</li>
-                                <li>Rencontre de la balise <code>&lt;script&gt;</code> : Le navigateur exécute immédiatement le code JavaScript qu'elle contient</li>
+                                <li>Rencontre de la balise <code>&lt;script&gt;</code> : Le navigateur exécute
+                                    immédiatement le code JavaScript qu'elle contient</li>
                             </ul>
                         </div>
                     </div>
@@ -67,7 +74,8 @@
                             <strong>Exécution de alert('Hello, world!')</strong> :
                             <ul>
                                 <li>Une boîte de dialogue modale s'affiche avec le message "Hello, world!"</li>
-                                <li>L'exécution du code HTML est suspendue jusqu'à ce que l'utilisateur clique sur "OK"</li>
+                                <li>L'exécution du code HTML est suspendue jusqu'à ce que l'utilisateur clique sur "OK"
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -75,7 +83,8 @@
                     <div class="step">
                         <div class="step-number">5</div>
                         <div class="step-content">
-                            <strong>Suite du chargement</strong> : Après avoir fermé l'alerte, le navigateur continue le traitement du HTML
+                            <strong>Suite du chargement</strong> : Après avoir fermé l'alerte, le navigateur continue le
+                            traitement du HTML
                             <ul>
                                 <li>Le corps du document (<code>&lt;body&gt;</code>) est chargé</li>
                                 <li>Le titre <code>&lt;h1&gt;Hello!&lt;/h1&gt;</code> est affiché dans la page</li>
@@ -91,50 +100,318 @@
                     </div>
                 </div>
             </div>
-
             <div class="important">
                 <h3>Points importants à noter :</h3>
                 <ul>
-                    <li>Le code JavaScript est exécuté de manière <strong>synchrone</strong>, ce qui bloque le rendu du reste de la page jusqu'à son exécution complète</li>
-                    <li>La fonction <code>alert()</code> est une méthode d'affichage de boîte de dialogue native au navigateur</li>
-                    <li>Ce type d'exécution (script dans l'en-tête) est déconseillé pour les scripts volumineux car il retarde l'affichage du contenu visible</li>
-                    <li>Pour de meilleures pratiques, il est recommandé de placer les scripts à la fin du body ou d'utiliser les attributs <code>async</code> ou <code>defer</code></li>
+                    <li>Le code JavaScript est exécuté de manière <strong>synchrone</strong>, ce qui bloque le rendu du
+                        reste de la page jusqu'à son exécution complète</li>
+                    <li>La fonction <code>alert()</code> est une méthode d'affichage de boîte de dialogue native au
+                        navigateur</li>
+                    <li>Ce type d'exécution (script dans l'en-tête) est déconseillé pour les scripts volumineux car il
+                        retarde l'affichage du contenu visible</li>
+                    <li>Pour de meilleures pratiques, il est recommandé de placer les scripts à la fin du body ou
+                        d'utiliser les attributs <code>async</code> ou <code>defer</code></li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section class="event-section">
-        <div>
-            <h2>Comprendre les Événements JavaScript</h2>
-            <div class="event-content">
-                <p>Dans cette section, nous allons explorer le concept d'<strong>événements</strong> en JavaScript.</p>
+        <h2>Comprendre les Événements JavaScript</h2>
 
-                <p>Reprenons notre exemple précédent. Au lieu d'afficher directement "Hello World" avec <code>alert()</code>, nous allons encapsuler cette fonctionnalité dans une fonction :</p>
+        <p>Dans cette section, nous allons explorer le concept d'<strong>événements</strong> en JavaScript.</p>
 
-                <div class="code-container">
-                    <pre><code><span class="code-tag">&lt;script&gt;</span>
-function hello() {
-    alert('Hello, world!');
-}
-<span class="code-tag">&lt;/script&gt;</span></code></pre>
+        <p>Reprenons notre exemple précédent. Au lieu d'afficher directement "Hello World" avec
+            <code>alert()</code>,
+            nous allons encapsuler cette fonctionnalité dans une fonction :
+        </p>
+        <div class="code-container">
+            <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="en"&gt;</span>
+    <span class="code-tag">&lt;head&gt;</span>
+        <span class="code-tag">&lt;title&gt;</span>Hello<span class="code-tag">&lt;/title&gt;</span>
+        <span class="code-tag">&lt;script&gt;</span>
+        function hello(){
+            alert(<span class="code-string">'Hello, world!'</span>);
+            }
+        <span class="code-tag">&lt;/script&gt;</span>
+    <span class="code-tag">&lt;/head&gt;</span>
+    <span class="code-tag">&lt;body&gt;</span>
+        <span class="code-tag">&lt;h1&gt;</span>Hello!<span class="code-tag">&lt;/h1&gt;</span>
+    <span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+        </div>
+
+        <div class="highlight">
+            <p>Maintenant, si nous exécutons ce code, rien ne se produira car la fonction <code>hello()</code> n'est
+                jamais
+                appelée. L'objectif est donc de faire en sorte que cette fonction s'exécute <strong>lorsqu'un événement
+                    spécifique se produit</strong> sur la page.</p>
+
+
+            <p>On peut considérer cela comme un <strong>événement</strong>. Avec JavaScript, nous pouvons ajouter
+                des
+                <strong>écouteurs d'événements</strong> (event listeners) ou des <strong>gestionnaires
+                    d'événements</strong> (event handlers).
+            </p>
+
+            <p>Ces mécanismes permettent de spécifier que <strong>lorsqu'un événement particulier se produit</strong>,
+                un
+                <strong>bloc de code ou une fonction spécifique doit être exécuté</strong>.
+            </p>
+
+            <p>Grâce à cette approche, notre code JavaScript peut <strong>réagir aux interactions des
+                    utilisateurs</strong>
+                avec notre page web. Par exemple, nous pouvons dire : "Lorsque l'utilisateur clique sur ce bouton,
+                j'aimerais exécuter cette fonction JavaScript".</p>
+
+            <p>Appliquons ce concept à notre exemple. Au lieu d'afficher directement l'alerte "Hello World", je vais
+                placer
+                cette alerte <strong>à l'intérieur d'une fonction</strong>.</p>
+
+            <p>Pour créer une fonction en JavaScript, on utilise le mot-clé <code>function</code> suivi du nom de la
+                fonction. J'ai choisi de nommer cette fonction <code>hello</code>. Entre parenthèses, on peut
+                éventuellement
+                spécifier des paramètres si la fonction nécessite des entrées.</p>
+        </div>
+        <div class="explanation">
+            <h3>Explication de l'exécution :</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Définition de la fonction</strong> : Lorsque le navigateur charge la page et
+                        rencontre
+                        le
+                        bloc <code>&lt;script&gt;</code>, il enregistre la fonction <code>hello()</code> en
+                        mémoire mais
+                        ne
+                        l'exécute pas immédiatement.
+                    </div>
                 </div>
 
-                <p>Maintenant, si nous exécutons ce code, rien ne se produira car la fonction <code>hello()</code> n'est jamais appelée. L'objectif est donc de faire en sorte que cette fonction s'exécute <strong>lorsqu'un événement spécifique se produit</strong> sur la page.</p>
-
-                <div class="highlight">
-                    <p>On peut considérer cela comme un <strong>événement</strong>. Avec JavaScript, nous pouvons ajouter des <strong>écouteurs d'événements</strong> (event listeners) ou des <strong>gestionnaires d'événements</strong> (event handlers).</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Attente d'un événement</strong> : Contrairement à l'exemple précédent où
+                        <code>alert()</code> était appelée directement, ici le code reste inactif jusqu'à ce
+                        qu'un
+                        événement
+                        déclenche l'appel de la fonction.
+                    </div>
                 </div>
 
-                <p>Ces mécanismes permettent de spécifier que <strong>lorsqu'un événement particulier se produit</strong>, un <strong>bloc de code ou une fonction spécifique doit être exécuté</strong>.</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Événement déclencheur</strong> : Pour que la fonction <code>hello()</code>
+                        s'exécute,
+                        nous
+                        devons lier son appel à un événement spécifique (clic de souris, chargement de la
+                        page, frappe
+                        au
+                        clavier, etc.).
+                    </div>
+                </div>
 
-                <p>Grâce à cette approche, notre code JavaScript peut <strong>réagir aux interactions des utilisateurs</strong> avec notre page web. Par exemple, nous pouvons dire : "Lorsque l'utilisateur clique sur ce bouton, j'aimerais exécuter cette fonction JavaScript".</p>
-
-                <p>Appliquons ce concept à notre exemple. Au lieu d'afficher directement l'alerte "Hello World", je vais placer cette alerte <strong>à l'intérieur d'une fonction</strong>.</p>
-
-                <p>Pour créer une fonction en JavaScript, on utilise le mot-clé <code>function</code> suivi du nom de la fonction. J'ai choisi de nommer cette fonction <code>hello</code>. Entre parenthèses, on peut éventuellement spécifier des paramètres si la fonction nécessite des entrées.</p>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Exécution différée</strong> : L'exécution du code JavaScript est maintenant
+                        conditionnée
+                        à
+                        la survenue d'un événement, ce qui permet une interaction dynamique avec
+                        l'utilisateur plutôt
+                        qu'une
+                        exécution immédiate au chargement de la page.
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="important">
+            <h3>Points importants à noter :</h3>
+            <ul>
+                <li>Définir une fonction ne signifie pas qu'elle sera exécutée automatiquement</li>
+                <li>Les fonctions JavaScript doivent être explicitement appelées pour s'exécuter</li>
+                <li>Les événements permettent de déclencher l'exécution de code en réponse aux actions des utilisateurs
+                </li>
+                <li>La programmation événementielle est fondamentale pour créer des interfaces interactives</li>
+                <li>JavaScript offre plusieurs méthodes pour associer des fonctions à des événements (onclick,
+                    addEventListener, etc.)</li>
+            </ul>
+        </div>
+        <div class="conclusion">
+            <p><strong>En résumé</strong> : En encapsulant le code dans une fonction sans l'appeler
+                directement,
+                nous
+                passons d'une exécution immédiate et bloquante à une exécution conditionnelle basée sur des
+                événements.
+                Cette approche est fondamentale pour créer des pages web interactives qui répondent aux
+                actions des
+                utilisateurs.</p>
+        </div>
+        </div>
+    </section>
+    <section class="event-section">
+        <h2>Appel de la fonction via le clic d'un bouton</h2>
+        <div class="highlight">
+            <p>
+                Ce que j'aimerais faire, c'est <strong>exécuter cette fonction lorsqu'il se passe quelque chose sur la
+                    page</strong>, par exemple quand un utilisateur clique sur un bouton.
+            </p>
+            <p>
+                Pour cela, la première chose à faire est de <strong>créer un bouton</strong>. Donc j'ajoute un bouton
+                qui
+                dit simplement « Cliquez ici».
+                Si je rafraîchis la page, je vois maintenant le texte « Hello» et ce bouton « Cliquez ici».
+            </p>
+        </div>
+        <div class="code-container">
+            <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="en"&gt;</span>
+    <span class="code-tag">&lt;head&gt;</span>
+        <span class="code-tag">&lt;title&gt;</span>Hello<span class="code-tag">&lt;/title&gt;</span>
+        <span class="code-tag">&lt;script&gt;</span>
+        function hello(){
+            alert(<span class="code-string">'Hello, world!'</span>);
+            }
+        <span class="code-tag">&lt;/script&gt;</span>
+    <span class="code-tag">&lt;/head&gt;</span>
+    <span class="code-tag">&lt;body&gt;</span>
+        <span class="code-tag">&lt;h1&gt;</span>Hello!<span class="code-tag">&lt;/h1&gt;</span>
+        <span class="code-tag">&lt;button&gt;</span>cliquez ici<span class="code-tag">&lt;/button&gt;</span>
+    <span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+        </div>
+        <div class="highlight">
+            <p>
+                Mais quand je clique dessus, <strong>rien ne se passe</strong>, car je n'ai pas encore précisé ce qui
+                doit
+                se produire quand l'utilisateur clique dessus.
+            </p>
+            <p>
+                Une manière de faire est <strong>d'ajouter un attribut à cet élément HTML</strong> appelé
+                <code>onclick</code>.
+                Cet attribut va définir un « gestionnaire de clic» pour le bouton, c'est-à-dire ce qui doit se produire
+                quand l'utilisateur clique dessus.
+            </p>
+            <p>
+                Je vais donc définir l'attribut <code>onclick</code> de façon à <strong>exécuter la fonction
+                    <code>hello</code></strong>.
+                Pour exécuter une fonction en JavaScript, on utilise simplement le nom de la fonction suivi de
+                parenthèses.
+                Le fait qu'il n'y ait rien entre les parenthèses signifie qu'on n'envoie aucun argument à la fonction.
+            </p>
+        </div>
+        <div class="code-container">
+            <pre><code>
+            <span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+            <span class="code-tag">&lt;html lang="en"&gt;</span>
+                <span class="code-tag">&lt;head&gt;</span>
+                    <span class="code-tag">&lt;title&gt;</span>Hello<span class="code-tag">&lt;/title&gt;</span>
+                    <span class="code-tag">&lt;script&gt;</span>
+                    <span style="color:yellow;">function hello(){</span>
+                        alert(<span class="code-string">'Hello, world!'</span>);
+                    <span style="color:yellow;">}</span>
+                    <span class="code-tag">&lt;/script&gt;</span>
+                <span class="code-tag">&lt;/head&gt;</span>
+                <span class="code-tag">&lt;body&gt;</span>
+                    <span class="code-tag">&lt;h1&gt;</span>Hello!<span class="code-tag">&lt;/h1&gt;</span>
+                    <span class="code-tag">&lt;button</span> <span style="color:lightblue;">onclick="hello()"</span><span class="code-tag">&gt;</span>
+                        cliquez ici
+                    <span class="code-tag">&lt;/button&gt;</span>
+                <span class="code-tag">&lt;/body&gt;</span>
+            <span class="code-tag">&lt;/html&gt;</span>
+                </code></pre>
+        </div>
+        <div class="highlight">
+            <p>
+                Ainsi, j'ai lié les deux parties de la page: le bouton « Cliquez ici» et l'attribut
+                <code>onclick</code>
+                qui dit:
+                « quand tu cliques, exécute la fonction <code>hello</code>.»
+            </p>
+            <p>
+                Un peu plus haut, j'ai défini la fonction <code>hello</code>, et celle-ci dit simplement:
+                <strong>quand
+                    la
+                    fonction est appelée, affiche une alerte disant « Hello world».</strong>
+            </p>
+            <p>
+                Maintenant, si je clique sur le bouton, une alerte apparaît. À chaque clic, la fonction
+                <code>hello</code>
+                est rappelée et l'alerte s'affiche à nouveau.
+            </p>
+        </div>
+        <div class="explanation">
+            <h3>Explication de l'exécution :</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Définition de la fonction</strong> : Lors du chargement de la page, le navigateur enregistre la fonction <code>hello()</code> en mémoire mais ne l'exécute pas encore.
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Affichage du bouton</strong> : Le bouton "Cliquez ici" est rendu dans la page, mais sans comportement interactif initial.
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Liaison de l'événement</strong> : L'attribut <code>onclick="hello()"</code> associe le clic du bouton à l'exécution de la fonction <code>hello()</code>.
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <strong>Attente d'interaction</strong> : Le code reste inactif jusqu'à ce que l'utilisateur clique sur le bouton.
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <strong>Déclenchement par l'utilisateur</strong> : Lorsque l'utilisateur clique sur le bouton, le navigateur détecte l'événement de clic.
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <strong>Exécution de la fonction</strong> : L'événement de clic déclenche l'appel de la fonction <code>hello()</code>, qui affiche alors la boîte d'alerte "Hello, world!".
+                    </div>
+                </div>
+        
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <strong>Réitération</strong> : Chaque clic ultérieur sur le bouton déclenche à nouveau l'exécution de la fonction <code>hello()</code>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="important">
+            <h3>Points importants à noter :</h3>
+
+        </div>
+        <div class="conclusion">
+            <p><strong>En résumé</strong> : En encapsulant le code dans une fonction sans l'appeler
+                directement,
+                nous
+                passons d'une exécution immédiate et bloquante à une exécution conditionnelle basée sur des
+                événements.
+                Cette approche est fondamentale pour créer des pages web interactives qui répondent aux
+                actions des
+                utilisateurs.</p>
+        </div>
         </div>
     </section>
 </body>
+
 </html>
