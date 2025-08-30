@@ -997,7 +997,7 @@
     <!--Aulieu de Selec('h1') Selec('button')-->
     <section class="event-section">
         <div>
-            <h2>Séparation du JavaScript et du HTML</h2>
+            <h2>Séparation du JavaScript et du body </h2>
 
             <div class="highlight">
                 <p>Heureusement, il existe des manières de faire cela. Par exemple, je peux ajouter un écouteur
@@ -1231,6 +1231,45 @@
                 document.querySelector("button").addEventListener("click", count);
             });
                 </code></pre>
+                ou
+                <pre style="color:blue"><code>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelector("button").onclick=count;
+                    });
+                        </code></pre>
+            </div>
+
+        </div>
+        <div class="exercise">
+            <h3>Exercice pratique</h3>
+            <p>
+                Reprenez le compteur que nous venons de voir et améliorez-le de la manière suivante :
+            </p>
+            <ul>
+                <li>Ajoutez un deuxième bouton intitulé <code>Réinitialiser</code> qui remet le compteur à 0.</li>
+                <li>Utilisez <code>addEventListener</code> pour attacher un événement <code>click</code> à ce bouton.
+                </li>
+                <li>Assurez-vous que tout le code qui manipule les boutons se trouve à l'intérieur d'un
+                    <code>DOMContentLoaded</code>, pour éviter les erreurs si le script est dans le
+                    <code>&lt;head&gt;</code>.
+                </li>
+                <li>Testez votre page pour vérifier que le bouton <code>Compter</code> incrémente toujours le compteur
+                    et que le bouton <code>Réinitialiser</code> le remet à zéro.</li>
+            </ul>
+            <p>
+                💡 Astuce : vous pouvez utiliser <code>document.querySelectorAll("button")[1]</code> pour sélectionner
+                le deuxième bouton si vous n'avez pas donné d'id.
+            </p>
+        </div>
+
+    </section>
+    <section class="event-section">
+        <div>
+            <h2>Séparation du JavaScript et du HTML</h2>
+            <div class="highlight">
+                <p>Le code Js est en train de grandir, nous allon le séparer du fichier html comme on avait fait avec
+                    css
+                </p>
             </div>
 
         </div>
